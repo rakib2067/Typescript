@@ -8,7 +8,7 @@ This repo will contain the code and notes (below) for the Udemy course: [The Ult
 
 - [Section 3: Getting Started with TypeScript](#section-3-getting-started-with-typescript)
 
-## Section 3: Getting Started with TypeScript
+## Section 1: Getting Started with TypeScript
 
 ### What is TypeScript?
 
