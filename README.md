@@ -1,1 +1,20 @@
 # Typescript
+
+## Introduction
+
+This repo will contain the code and notes (below) for the Udemy course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
+
+## Table of Contents
+
+- [Section 3: Getting Started with TypeScript](#section-3-getting-started-with-typescript)
+
+## Section 3: Getting Started with TypeScript
+
+### What is TypeScript?
+
+- TypeScript is a programming language that is a strict syntactical superset of JavaScript.
+- TypeScript is a statically typed language, as opposed to JavaScript, meaning that the type of variables are fixed, and will be determined at compile time, as opposed to JavaScript where variable types can change after runtime
+- Therefore, with TypeScript, our code is compiled at runtime in order to perform type checking and check for errors, and then converted into JavaScript code.
+- Since this type checking occurs at compile time, we can check for errors without having to actually run the app or any tests.
+
+- During the compilation process, our TypeScript code is compiled and translated into JavaScript, this process is known as `Transpilation`
