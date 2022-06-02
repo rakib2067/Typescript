@@ -1,4 +1,4 @@
-# Typescript
+# TypeScript
 
 ## Introduction
 
@@ -8,7 +8,7 @@ This repo will contain the code and notes (below) for the Udemy course: [The Ult
 
 - [Section 3: Getting Started with TypeScript](#section-3-getting-started-with-typescript)
 
-## Section 3: Getting Started with TypeScript
+## Section 1: Getting Started with TypeScript
 
 ### What is TypeScript?
 
@@ -18,3 +18,14 @@ This repo will contain the code and notes (below) for the Udemy course: [The Ult
 - Since this type checking occurs at compile time, we can check for errors without having to actually run the app or any tests.
 
 - During the compilation process, our TypeScript code is compiled and translated into JavaScript, this process is known as `Transpilation`
+
+#### Setting Up the Development Environment
+
+- Run 'npm i -g typescript' will globally install and allow for the use of the TypeScript compiler from any folder
+- Check for a succesful installation using 'tsc -v'
+
+### First TypeScript Program
+
+- All TypeScript files are identified through the '.ts' extension
+- As evident, upon compiling our code, the 'let' keyword has been converted into a 'var'
+  - This is because TypeScript converts our code to ES5 JavaScript by defualt
