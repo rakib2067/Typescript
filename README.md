@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo will contain the code and notes (below) for the Udemy course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
+This repo will contain the code and notes for the course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
 
 ## Table of Contents
 
