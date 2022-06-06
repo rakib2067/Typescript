@@ -29,3 +29,8 @@ This repo will contain the code and notes (below) for the Udemy course: [The Ult
 - All TypeScript files are identified through the '.ts' extension
 - As evident, upon compiling our code, the 'let' keyword has been converted into a 'var'
   - This is because TypeScript converts our code to ES5 JavaScript by defualt
+
+### Configuring the TypeScript Compiler
+
+- We can create config files through the terminal by using `tsc --init`
+-
