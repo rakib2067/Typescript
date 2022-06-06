@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This repo will contain the code and notes (below) for the Udemy course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
+This repo will contain the code and notes for the course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
 
 ## Table of Contents
 
-- [Section 3: Getting Started with TypeScript](#section-3-getting-started-with-typescript)
+- [Section 1: Getting Started with TypeScript](#section-1-getting-started-with-typescript)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -21,13 +21,13 @@ This repo will contain the code and notes (below) for the Udemy course: [The Ult
 
 #### Setting Up the Development Environment
 
-- Run 'npm i -g typescript' will globally install and allow for the use of the TypeScript compiler from any folder
-- Check for a succesful installation using 'tsc -v'
+- Run `npm i -g typescript` will globally install and allow for the use of the TypeScript compiler from any folder
+- Check for a succesful installation using `tsc -v`
 
 ### First TypeScript Program
 
-- All TypeScript files are identified through the '.ts' extension
-- As evident, upon compiling our code, the 'let' keyword has been converted into a 'var'
+- All TypeScript files are identified through the `.ts` extension
+- As evident, upon compiling our code, the `let` keyword has been converted into a `var`
   - This is because TypeScript converts our code to ES5 JavaScript by defualt
 
 ### Configuring the TypeScript Compiler
