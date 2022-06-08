@@ -19,18 +19,18 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 
 - During the compilation process, our TypeScript code is compiled and translated into JavaScript, this process is known as `Transpilation`
 
-#### Setting Up the Development Environment
+### Setting Up the Development Environment
 
 - Run `npm i -g typescript` will globally install and allow for the use of the TypeScript compiler from any folder
 - Check for a succesful installation using `tsc -v`
 
-#### First TypeScript Program
+### First TypeScript Program
 
 - All TypeScript files are identified through the `.ts` extension
 - As evident, upon compiling our code, the `let` keyword has been converted into a `var`
   - This is because TypeScript converts our code to ES5 JavaScript by defualt
 
-#### Configuring the TypeScript Compiler
+### Configuring the TypeScript Compiler
 
 - We can create config files through the terminal by using `tsc --init`
 - This will create a config file with the default setting of compiling to ES6
@@ -42,9 +42,15 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
   - The `removeComments` setting removes all comments on compilation
   - The `noEmitOnError` property prevents our code from compiling in the case of errors
 
+<<<<<<< HEAD
 - Now that we've configured our settings, we can just type tsc, to compile all our code at once since, we've specified the rootDir
 
 #### Debugging TypeScript in VSCode
+=======
+- Now that we've configured our settings, we can just type `tsc`, to compile all our code at once since, we've specified the rootDir
+
+### Debugging TypeScript in VSCode
+>>>>>>> 7a60fb92f60fcb566a2c67439230f607d4c9e62f
 
 - In `tsconfig.json` enable the `sourceMap` property
 
@@ -53,4 +59,9 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 - Now, we can set breakpoints in our code and launch the debugger using the Node preset
 - Doing this will create a `launch.json` file
 - In this file we need to add `"preLaunchTask:": "tsc: build - tsconfig.json"`
+<<<<<<< HEAD
 - We can now launch the debugger using f5
+=======
+- We can now launch the debugger using F5
+
+>>>>>>> 7a60fb92f60fcb566a2c67439230f607d4c9e62f
