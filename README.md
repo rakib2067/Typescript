@@ -44,7 +44,7 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 
 - Now that we've configured our settings, we can just type `tsc`, to compile all our code at once since, we've specified the rootDir
 
-#### Debugging TypeScript in VSCode
+### Debugging TypeScript in VSCode
 
 - In `tsconfig.json` enable the `sourceMap` property
 
