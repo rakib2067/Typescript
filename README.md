@@ -42,15 +42,9 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
   - The `removeComments` setting removes all comments on compilation
   - The `noEmitOnError` property prevents our code from compiling in the case of errors
 
-<<<<<<< HEAD
-- Now that we've configured our settings, we can just type tsc, to compile all our code at once since, we've specified the rootDir
-
-#### Debugging TypeScript in VSCode
-=======
 - Now that we've configured our settings, we can just type `tsc`, to compile all our code at once since, we've specified the rootDir
 
 ### Debugging TypeScript in VSCode
->>>>>>> 7a60fb92f60fcb566a2c67439230f607d4c9e62f
 
 - In `tsconfig.json` enable the `sourceMap` property
 
@@ -59,9 +53,4 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 - Now, we can set breakpoints in our code and launch the debugger using the Node preset
 - Doing this will create a `launch.json` file
 - In this file we need to add `"preLaunchTask:": "tsc: build - tsconfig.json"`
-<<<<<<< HEAD
-- We can now launch the debugger using f5
-=======
 - We can now launch the debugger using F5
-
->>>>>>> 7a60fb92f60fcb566a2c67439230f607d4c9e62f
