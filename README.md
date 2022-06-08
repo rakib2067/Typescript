@@ -33,4 +33,13 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 ### Configuring the TypeScript Compiler
 
 - We can create config files through the terminal by using `tsc --init`
--
+- This will create a config file with the default setting of compiling to ES6
+- The config file has multiple properties which we can change
+
+  - the `target` property, allows us to specify which version of JS our code will compile to
+  - the `rootDir` property, specifies where our source code will be i.e. the code to be compiled
+  - the `outDir` property, specifies where our compiled JS code will be outputted
+  - The `removeComments` setting removes all comments on compilation
+  - The `noEmitOnError` property prevents our code from compiling in the case of errors
+
+- Now that we've configured our settings, we can just type tsc, to compile all our code at once since, we've specified the rootDir
