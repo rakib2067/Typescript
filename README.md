@@ -43,3 +43,15 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
   - The `noEmitOnError` property prevents our code from compiling in the case of errors
 
 - Now that we've configured our settings, we can just type `tsc`, to compile all our code at once since, we've specified the rootDir
+
+#### Debugging TypeScript in VSCode
+
+- In `tsconfig.json` enable the `sourceMap` property
+
+  - By doing this, upon compilation a source map file will also be generated which will map our TS code to our compiled JS code
+
+- Now, we can set breakpoints in our code and launch the debugger using the Node preset
+- Doing this will create a `launch.json` file
+- In this file we need to add `"preLaunchTask:": "tsc: build - tsconfig.json"`
+- We can now launch the debugger using F5
+
