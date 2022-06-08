@@ -52,5 +52,5 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 
 - Now, we can set breakpoints in our code and launch the debugger using the Node preset
 - Doing this will create a `launch.json` file
-- In this file we need to add `"preLaunchTask:": "tsc: build - tsconfig.json"`
+- In this file we need to add ```"preLaunchTask:": "tsc: build - tsconfig.json"```
 - We can now launch the debugger using F5
