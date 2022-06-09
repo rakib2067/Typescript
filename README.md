@@ -83,7 +83,7 @@ With TypeScript, we annotate our variables with their types in order to declare 
 
 If no type is declared, but a value has already been given to the variable, the TS compiler will automatically infer types based on values
 
-- So the following code:
+So the following code:
 
 ```typescript
 let age: number = 22;
@@ -91,10 +91,24 @@ let course: string = "TypeScript";
 let isValid: boolean = true;
 ```
 
-- Can be simplified to:
+Can be simplified to:
 
 ```javascript
 let age = 22;
 let course = "TypeScript";
 let isValid = true;
+```
+
+### The `any` Type
+
+In TypeScript, if we declare a variable without initialising it, TS will automatically assign it the type of `any`
+
+- A variable with type `any` can be assigned values of any data type, and behaves like a normal JS variab;e
+- As this goes against the whole point of using TS, it should be avoided when possible
+- An example use of any can be in function parameters:
+
+```typescript
+function render(document: any) {
+  console.log(document);
+}
 ```
