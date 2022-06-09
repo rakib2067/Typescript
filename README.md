@@ -79,7 +79,7 @@ TypeScript extends this by introducing new types such as:
 
 ### Declaring Types
 
-With TypeScript, we annotate our variables with their types in order to declare data types.
+In TypeScript, we annotate our variables with their types in order to declare data types.
 
 If no type is declared, but a value has already been given to the variable, the TS compiler will automatically infer types based on values
 
@@ -195,3 +195,50 @@ let rakibSize: Size = Size.Medium;
   - This value can be overwritten with another number
 - Enums can also be overwritten to contain other types, however all types must stay consistent
 - It is best practice to use the `const` keyword for more optimised JS code upon compilation
+
+### Functions
+
+In TypeScript, there are 2 things we need to keep in mind regarding functions
+
+- The types of the parameters of the function
+- The type of the value being returned by the function
+
+```typescript
+function calculateSquare(num: number): number {
+  // Valid
+  return num * num;
+
+  // Raises an error
+  return "a";
+}
+function printHello(): void {
+  console.log("Hello World!");
+}
+```
+
+- As seen above, both the function iteself and its parameters are annotated with types
+- The function annotation specifies what type of value is returned
+  - In the case that the function doesn't return anything we can use the `void` keyword
+- By default, TS does not notify us if there are any unused parameters
+  - We can enable this in the tsconfig file through the `noUnusedParameters` option
+
+No Implicit Returns:
+
+- The `NoImplicitReturns` setting, will check for whether we have implicit `any` types in our code e.g. an if statement without an else
+- In the below code, since we have an if statement without an else, if the income is over 50k it would return undefined.
+
+```typescript
+function calculateTax(income: number): number {
+  if (income < 50000) {
+    return income * 1.2;
+  }
+  // No else case, it will return undefined
+  else {
+    return income * 1.1;
+  }
+}
+```
+
+No Unused Locals:
+
+In cases where we declare variables without using them, the `NoUnusedLocals` setting can be helpful
