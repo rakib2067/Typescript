@@ -138,5 +138,30 @@ In JavaScript, arrays are dynamic and can contain multiple values of different t
   ```
 
 - An extra benefit of TS, is how well it works in conjunction with intelliSense
-- With typed Arrays, when performing an array method on a typed array, only methods which are available for said type will be shown
+- With typed Arrays, when performing an array method on a typed array, only methods and properties which are available for said type will be shown
 - This is not possible with vanilla JS
+
+### Tuples
+
+Tuple is a new data type introduced by TS, which is a fixed length array, wherein each element has a particular type.
+
+- A tuple can be declared as so:
+
+```typescript
+let user: [number, string] = [1, "Rakib"];
+
+// Error due to extra value
+let user: [number, string] = [1, "Rakib", 3];
+```
+
+- In the example code, the second line would return an error as our defined tuple has a fixed value of 2, which it
+- Tuples are compiled to normal JS Arrays:
+
+```typescript
+let user: [number, string] = [1, "Rakib"];
+
+// Compiles to
+let user = [1, "Rakib"];
+```
+
+- As a best practice, tuples should be restricted to 2 values e.g. key, value pairs, as anything larger can make code unreadable
