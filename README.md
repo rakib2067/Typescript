@@ -79,8 +79,9 @@ TypeScript extends this by introducing new types such as:
 
 ### Declaring Types
 
-- With TypeScript, we annotate our variables with their types in order to declare data types
-- If no type is declared, but a value has already been given to the variable, the TS compiler will automatically infer types based on values
+With TypeScript, we annotate our variables with their types in order to declare data types.
+
+If no type is declared, but a value has already been given to the variable, the TS compiler will automatically infer types based on values
 
 - So the following code:
 
