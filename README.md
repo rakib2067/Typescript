@@ -165,3 +165,33 @@ let user = [1, "Rakib"];
 ```
 
 - As a best practice, tuples should be restricted to 2 values e.g. key, value pairs, as anything larger can make code unreadable
+
+### Enums
+
+Enums are another TS specific type, which represents a list of related constants
+
+Example:
+
+```typescript
+let small = 1;
+let medium = 2;
+let large = 3;
+
+// We can reference these sizes throughout our code
+
+// PascalCase naming convention for both enum and values
+const enum Size {
+  // Default value of 0 ascending
+  Small = 1, //Giving an intial value, it will increment from there
+  Medium,
+  Large,
+}
+
+// Declared a variable of type Size, with the value 2
+let rakibSize: Size = Size.Medium;
+```
+
+- As seen in the example above, enums, automatically increment from a default value of 0
+  - This value can be overwritten with another number
+- Enums can also be overwritten to contain other types, however all types must stay consistent
+- It is best practice to use the `const` keyword for more optimised JS code upon compilation
