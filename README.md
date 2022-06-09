@@ -112,3 +112,31 @@ function render(document: any) {
   console.log(document);
 }
 ```
+
+### Arrays
+
+In JavaScript, arrays are dynamic and can contain multiple values of different types. If we pass such an array to a function which expects values of one type, it can raise issues.
+
+- We can define an array in TypeScript as so:
+
+  ```typescript
+  let numbers: number[] = [1, 2, "3"];
+  ```
+
+- Doing so will allow for the compiler to detect type errors
+
+- Again it is also possible to declare an empty array
+- Doing so will give it the any type
+- In such a case, for an empty array it's best to declare the type of the array
+
+  ```typescript
+  //Type: any
+  let numbers = [];
+
+  //Type: number
+  let numbers: number[] = [];
+  ```
+
+- An extra benefit of TS, is how well it works in conjunction with intelliSense
+- With typed Arrays, when performing an array method on a typed array, only methods which are available for said type will be shown
+- This is not possible with vanilla JS
