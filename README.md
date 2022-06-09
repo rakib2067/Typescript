@@ -7,6 +7,7 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 ## Table of Contents
 
 - [Section 1: Getting Started with TypeScript](#section-1-getting-started-with-typescript)
+- [Section 2: TypeScript Fundamentals](#section-2-typescript-fundamentals)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -54,3 +55,45 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 - Doing this will create a `launch.json` file
 - In this file we need to add `"preLaunchTask:": "tsc: build - tsconfig.json"`
 - We can now launch the debugger using F5
+
+## Section 2: TypeScript Fundamentals
+
+### Built-in Types
+
+JavaScript comes with a range of built in data-types such as:
+
+- Number
+- String
+- Boolean
+- null
+- undefined
+- object
+
+TypeScript extends this by introducing new types such as:
+
+- any
+- unknown
+- never
+- enum
+- tuple
+
+### Declaring Types
+
+- With TypeScript, we annotate our variables with their types in order to declare data types
+- If no type is declared, but a value has already been given to the variable, the TS compiler will automatically infer types based on values
+
+- So the following code:
+
+```typescript
+let age: number = 22;
+let course: string = "TypeScript";
+let isValid: boolean = true;
+```
+
+- Can be simplified to:
+
+```javascript
+let age = 22;
+let course = "TypeScript";
+let isValid = true;
+```
