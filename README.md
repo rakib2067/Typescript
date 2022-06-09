@@ -241,4 +241,33 @@ function calculateTax(income: number): number {
 
 No Unused Locals:
 
-In cases where we declare variables without using them, the `NoUnusedLocals` setting can be helpful
+- In cases where we declare variables without using them, the `NoUnusedLocals` setting can be helpful
+- It is also possible to make function parameters optional by using the `parameter?: type` syntax
+
+Objects:
+
+In JavaScript, objects are dynamic, and properties can be added to them after being declared
+
+- In TypeScript however, objects also have to be annotated with the properties, and types of their values
+- In certain cases, we might want to initialise an object without a certain property
+  - the `parameter?: type` syntax can also be used here
+- As objects can contain functions, any function also has to be annotated
+
+```typescript
+let employee: {
+  // Annotation for the person object
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void;
+} = {
+   id: 1,
+   name: "Rakib",
+   retire(data:Date)=>{
+  console.log(date)
+}
+};
+```
+
+- In the above example, the employee object has annotations for all its properties
+- As the values of an object can change and is dynamic, we can use the `readonly` property on the ID
+- the retire function is also annotated to take in a date argument and return nothing
