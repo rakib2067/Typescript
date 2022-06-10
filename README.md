@@ -284,7 +284,7 @@ There are multiple problems present in the object implementation in the previous
 - If we were to create another employee object, it may have other properties, as of right now we do not have a specific way of defining the structure of an employee object
 - The syntax used previously is a bit hard on the eyes and can make the code hard to read
 
-This is Type Aliases come in:
+This is where Type Aliases come in:
 
 ```typescript
 type Employee = {
@@ -305,3 +305,17 @@ let employee: Employee={
 ```
 
 - With type aliases, we are able to define the structure of an object in one place, and create our own custom types
+
+### Union Types
+
+Union types allow for variables/function parameters to have more than 1 type
+
+- Union types are denoted through the use of the `|` character
+- When using union types, a technique called narrowing is used to dictate what to do based on the type of the argument
+
+```typescript
+function kgToLb(weight: number | string) {
+  if (typeof weight == "number") return weight * 2.2;
+  else return parseInt(weight) * 2.2;
+}
+```
