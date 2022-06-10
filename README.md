@@ -325,7 +325,6 @@ function kgToLb(weight: number | string) {
 Intersection types check for whether a value satisfies all type conditions defined in the annotation
 
 - The `&` is used to denote an intersection type
-- When using an intersection type, upon compilation, the
 
 ```typescript
 // First we create 2 Type Aliases
@@ -350,3 +349,22 @@ let textBox: UIWidget={
 ```
 
 - The above object textBox is of type UIWidget (an Intersection Type), as it has both a drag and resize method, both which are respective method of the Resizable and Draggable types
+
+### Literal Types
+
+- Literal types are a way to ensure that variables contain a specific value
+- By themselves, they are not really useful, but they can be used in conjunction with intersection types
+- Literal types can be of any type
+
+```typescript
+// Creating a literal type quantity that can only be 1 of 2 specified values
+type Quantity = 50 | 100;
+
+// Raises an error
+let quantity: Quantity = 200;
+
+let quantity: Quantity = 50;
+
+// This literal type accepts either 1 of 2 specified strings
+type Metric = "cm" | "inch";
+```
