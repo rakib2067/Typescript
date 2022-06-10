@@ -8,6 +8,7 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 
 - [Section 1: Getting Started with TypeScript](#section-1-getting-started-with-typescript)
 - [Section 2: TypeScript Fundamentals](#section-2-typescript-fundamentals)
+- [Section 3: Advanced Types](#section-3-advanced-types)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -257,7 +258,7 @@ In JavaScript, objects are dynamic, and properties can be added to them after be
 let employee: {
   // Annotation for the person object
   readonly id: number;
-  name: string;
+  name: string,
   retire: (date: Date) => void;
 } = {
    id: 1,
@@ -271,3 +272,36 @@ let employee: {
 - In the above example, the employee object has annotations for all its properties
 - As the values of an object can change and is dynamic, we can use the `readonly` property on the ID
 - the retire function is also annotated to take in a date argument and return nothing
+
+## Section 3: Advanced Types
+
+### Type Aliases
+
+There are multiple problems present in the object implementation in the previous section:
+
+- Firstly, if we were to create another employee object, we'd have to repeat the annotations
+  - Goes against DRY principles
+- If we were to create another employee object, it may have other properties, as of right now we do not have a specific way of defining the structure of an employee object
+- The syntax used previously is a bit hard on the eyes and can make the code hard to read
+
+This is Type Aliases come in:
+
+```typescript
+type Employee = {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void;
+};
+
+// We can now simplify our objects
+
+let employee: Employee={
+   id: 1,
+   name: "Rakib",
+   retire(data:Date)=>{
+  console.log(date)
+  }
+}
+```
+
+- With type aliases, we are able to define the structure of an object in one place, and create our own custom types
