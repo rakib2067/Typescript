@@ -319,3 +319,34 @@ function kgToLb(weight: number | string) {
   else return parseInt(weight) * 2.2;
 }
 ```
+
+### Intersection types
+
+Intersection types check for whether a value satisfies all type conditions defined in the annotation
+
+- The `&` is used to denote an intersection type
+- When using an intersection type, upon compilation, the
+
+```typescript
+// First we create 2 Type Aliases
+
+// Object of type draggable has method drag
+type Draggable = {
+  drag: () => void;
+};
+
+// Object of type resizable has method resize
+type Resizable = {
+  resize: (width, height) => void;
+};
+
+// Intersection type
+type UIWidget= Resizable && Draggable
+
+let textBox: UIWidget={
+  drag:()=> {},
+  resize:(width, height) => {}
+}
+```
+
+- The above object textBox is of type UIWidget (an Intersection Type), as it has both a drag and resize method, both which are respective method of the Resizable and Draggable types
