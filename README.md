@@ -452,3 +452,22 @@ let ride = {
 - In the above example, we are prone to error, as the conditional is checking for falsy values, wherein 0, a valid speed can be evaluated to false
 - The second implementation avoids this by using our annotated speed variable, which is guaranteed to be of type number of null
 - This is done through the use of the Nullish Coaelscing Operator
+
+### Type Assertions
+
+There are certain cases where we know more about an object then TypeScript. For instance, we know that the document object, contains many methods in reference to the DOM:
+
+- As seen in the example below, type assertions are used when we know more about the object than TS
+- With Type Assertion there is no type checking for the variable, so it should be used carefully
+- Type Assertion can be denoted in one of two ways
+  - The `as` Syntax
+  - The `<Assertion>` Syntax
+
+```ts
+let phone = document.getElementById("phone") as HTMLInputElement;
+let phone = <HTMLInputElement>document.getElementById("phone");
+
+// Interperted as a HTMLElement, so we cannot access the value
+// With the assertion we can now access the value property
+phone.value;
+```
