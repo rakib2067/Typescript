@@ -348,7 +348,7 @@ let textBox: UIWidget={
 }
 ```
 
-- The above object textBox is of type UIWidget (an Intersection Type), as it has both a drag and resize method, both which are respective method of the Resizable and Draggable types
+- The above object textBox is of type UIWidget (an Intersection Type), as it has both a drag and resize method, both which are respective methods of the Resizable and Draggable types
 
 ### Literal Types
 
@@ -367,4 +367,16 @@ let quantity: Quantity = 50;
 
 // This literal type accepts either 1 of 2 specified strings
 type Metric = "cm" | "inch";
+```
+
+### Nullable Types
+
+In JavaScript, both `null` and `undefined` can be the source of many errors in code. Therefore, such values need to be taken into consideration and handled correctly.
+
+```typescript
+function greet(name: string | null | undefined) {
+  if (name) console.log(`Hello ${name.toUpperCase()}`);
+  // In cases of null and undefined
+  else console.log("Hello Stranger");
+}
 ```
