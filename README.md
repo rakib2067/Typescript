@@ -494,3 +494,20 @@ function render(document: unknown) {
   }
 }
 ```
+
+### The Never Type
+
+The `never` type represents values that never occur.
+
+```ts
+function processEvents(): never {
+  while (true) {
+    // Read a message from a queue
+  }
+}
+
+processEvents();
+
+// Line never gets executed due to infinite loop
+console.log("Hello world");
+```
