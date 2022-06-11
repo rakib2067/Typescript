@@ -511,3 +511,5 @@ processEvents();
 // Line never gets executed due to infinite loop
 console.log("Hello world");
 ```
+
+## Section 4: Classes, Interfaces and Object-oriented Programming
