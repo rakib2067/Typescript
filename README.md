@@ -432,3 +432,23 @@ let log: any = null;
 // Will only execute if log references a function, otherwise we get undefined
 log?.("a");
 ```
+
+### The Nullish Coaelscing Operator
+
+When working with null/undefined values, sometimes we need to fall back to a default value
+
+For example:
+
+```typescript
+let speed: number | null = null;
+let ride = {
+  speed: speed || 30,
+
+  //Simplified form of speed !== null? speed: 30
+  speed: speed ?? 30,
+};
+```
+
+- In the above example, we are prone to error, as the conditional is checking for falsy values, wherein 0, a valid speed can be evaluated to false
+- The second implementation avoids this by using our annotated speed variable, which is guaranteed to be of type number of null
+- This is done through the use of the Nullish Coaelscing Operator
