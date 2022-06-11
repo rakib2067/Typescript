@@ -471,3 +471,26 @@ let phone = <HTMLInputElement>document.getElementById("phone");
 // With the assertion we can now access the value property
 phone.value;
 ```
+
+### The Unknown Type
+
+As previously mentioned, the `any` keyword should be avoided, however there are certain cases where we don't know the value of a variable/param
+
+In such cases the `unknown` type is used:
+
+- The `unknown` type causes the compiler to raise errors on method calls from an unknown type
+- It also encourages us to use narrowing, to match type cases
+
+```ts
+function render(document: unknown) {
+  // With any These will not be picked up as errors from the compiler
+  document.move();
+  document.fly();
+
+  // Narrowing
+
+  if (typeof document == "string") {
+    document.toUpperCase();
+  }
+}
+```
