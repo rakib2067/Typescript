@@ -380,3 +380,55 @@ function greet(name: string | null | undefined) {
   else console.log("Hello Stranger");
 }
 ```
+
+### Optional Chaining
+
+When working with Nullable Objects, we have to do null checks in certain cases
+
+```typescript
+// Customer type contains a birthday property of type Date
+// Optional property allows the option to have a birthday property or not
+type Customer = { birthday?: Date };
+
+// Get customer from db
+function getCustomer(id: number): Customer | null | undefined {
+  // If id is 0 return null otherwise return customer object
+  return id === 0 ? null : { birthday: new Date() };
+}
+let customer = getCustomer(0); //Returns null
+
+// Will not execute since the type of customer is null
+if (customer !== null && customer !== undefined) console.log(customer.birthday);
+
+// Simplified using optional property access operator
+
+// Only if we have a customer
+console.log(customer?.birthday);
+
+// Only if we have a customer who has a birthday
+console.log(customer?.birthday?.getFullYear());
+```
+
+- As seen in the code above, the optional property access operator is denoted by `?.` syntax
+  - It allows for the birthday to print only if the customer object is returned
+  - In the second line, only if a customer with a birthday property is returned will it print the full year
+  - In both cases if the condition is not satisfied, it will print `undefined`
+
+Essentially the optional property/element/call access operator `?.`, can be used in place of:
+
+```typescript
+if(customers !=='undefined' && customers !=='null')
+  // do something
+```
+
+Examples:
+
+- Objects - propery access operator: `customer?.birthday`
+- Arrays - element access operator: `customers?.[0]`
+- Functions - optional call:
+
+```typescript
+let log: any = null;
+// Will only execute if log references a function, otherwise we get undefined
+log?.("a");
+```
