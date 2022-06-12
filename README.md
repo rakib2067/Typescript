@@ -9,6 +9,8 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 - [Section 1: Getting Started with TypeScript](#section-1-getting-started-with-typescript)
 - [Section 2: TypeScript Fundamentals](#section-2-typescript-fundamentals)
 - [Section 3: Advanced Types](#section-3-advanced-types)
+- [Section 4: Classes, Interfaces and Object-oriented Programming](#section-4-classes-interfaces-and-object-oriented-programming)
+
 
 ## Section 1: Getting Started with TypeScript
 
