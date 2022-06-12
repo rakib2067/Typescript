@@ -513,3 +513,31 @@ console.log("Hello world");
 ```
 
 ## Section 4: Classes, Interfaces and Object-oriented Programming
+
+### Creating Classes
+
+In OOP, a class is a blueprint for creating objects, which are instances of the class. A class is made up of both properties and methods.
+
+- In TypeScript, classes have properties along with annotations, whereas in JS properties are only defined in the constructor
+- Also, despite being a function, the constructor has no return type, as it will always return an object of the class type
+
+```ts
+// Pascal naming convention
+class Account{
+  id: number,
+  owner:string,
+  balance:number
+
+  // does not need annotation as it will always return type Account
+  constructor(id:number, owner:string,balance:number){
+    this.id=id;
+    this.owner=owner;
+    this.balance=balance;
+  }
+  deposit(amount:number): void{
+    if(amount<0)
+      throw new Error('Invalid Amount');
+    this.balance += amount;
+  }
+}
+```
