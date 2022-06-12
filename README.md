@@ -11,7 +11,6 @@ This repo will contain the code and notes for the course: [The Ultimate TypeScri
 - [Section 3: Advanced Types](#section-3-advanced-types)
 - [Section 4: Classes, Interfaces and Object-oriented Programming](#section-4-classes-interfaces-and-object-oriented-programming)
 
-
 ## Section 1: Getting Started with TypeScript
 
 ### What is TypeScript?
@@ -541,5 +540,39 @@ class Account{
       throw new Error('Invalid Amount');
     this.balance += amount;
   }
+}
+```
+
+### Creating Objects
+
+Now that we have a class, we can begin to create instances of said class.
+
+- In the code below, it is evident that the typeof operator is unreliable, as it only returns `object` and not the actual class
+- Therefore, its better suited to use the `instanceof` keyword to check for a specfic type as it returns a boolean expression and is more reliable
+
+```ts
+let account = new Account(1, "Rakib", 1000);
+account.deposit(100);
+
+// Will return 'object'
+console.log(typeof account);
+
+// Will return true
+console.log(account instanceof Account);
+```
+
+### Readonly and Optional
+
+TypeScript allows us to add modifiers to our variables, in order to write more robust code. Examples are both the `readonly` and `optional` modifiers
+
+- The `readonly` modifier, prevents our specified property from being changed anywhere outside of the constructor
+- The optional: `?:` operator, allows for us to have optional properties in our classes
+
+```ts
+class Account{
+  readonly id: number,
+  owner:string,
+  balance:number,
+  nickname?: string
 }
 ```
