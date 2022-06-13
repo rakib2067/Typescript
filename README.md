@@ -576,3 +576,46 @@ class Account{
   nickname?: string
 }
 ```
+
+### Access Control Keywords
+
+- In TypeScript, all class properties and methods are by default public, meaning that they can all be accesses outside of the class.
+- This can, however cause issues, say in the case of a transaction, the balance can be changed outside the class using the above code
+
+  - In such a case, we do not know who paid how much money and when. i.e. We don't have a record of a transaction
+
+- We can use the `private` keyword, to protect our properties and methods, so that they can only be accessed inside the class
+  - Proteced properties are usually prefixed with an \_ as seen with `_balance`
+  - We can then create getter methods for reading these protected values
+
+```ts
+class Account{
+  readonly id: number,
+  owner:string,
+  _balance:number,
+  nickname?: string
+
+  constructor(id:number, owner:string,balance:number){
+    this.id=id;
+    this.owner=owner;
+    this._balance=balance;
+  }
+
+  // Private so deposit can only be accessed within the class
+  private deposit(amount:number): void{
+    if(amount<0)
+      throw new Error('Invalid Amount');
+    this._balance += amount;
+  }
+
+  getBalance(): number{
+    return this._balance
+  }
+}
+
+let account = new Account(1, "Rakib", 1000)
+
+account.balance=10 // Bad implementation as it is public and no record of transaction
+
+account.getBalance() // returns 1000
+```
