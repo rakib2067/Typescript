@@ -585,7 +585,7 @@ class Account{
   - In such a case, we do not know who paid how much money and when. i.e. We don't have a record of a transaction
 
 - We can use the `private` keyword, to protect our properties and methods, so that they can only be accessed inside the class
-  - Proteced properties are usually prefixed with an \_ as seen with `_balance`
+  - Proteced properties are usually prefixed with an `_` as seen with `_balance`
   - We can then create getter methods for reading these protected values
 
 ```ts
@@ -618,4 +618,30 @@ let account = new Account(1, "Rakib", 1000)
 account.balance=10 // Bad implementation as it is public and no record of transaction
 
 account.getBalance() // returns 1000
+```
+
+### Parameter Properties
+
+Using the access control keywords in our constructor parameters, it is possible to further simplify our code. These are known as parameter properties
+
+- The previous class syntax requires a lot of code and can be simplified
+- By using `public` in our constructor parameters, we tell the compiler to create a public property of a given name and initialise it in one go
+- The same syntax applies to `private` properties too, only again they must be prefixed with an `_`.
+
+```ts
+class Account{
+  // Below properties can now be omitted due to use of public
+
+  // readonly id: number,
+  // owner:string,
+  // _balance:number,
+  nickname?: string
+
+  constructor(public readonly id:number,
+              public owner:string,
+              private _balance:number){
+    // this.id=id;
+    // this.owner=owner;
+    // this._balance=balance;
+  }
 ```
