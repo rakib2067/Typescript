@@ -592,7 +592,7 @@ class Account{
 class Account{
   readonly id: number,
   owner:string,
-  _balance:number,
+  private _balance:number,
   nickname?: string
 
   constructor(id:number, owner:string,balance:number){
