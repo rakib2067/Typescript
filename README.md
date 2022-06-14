@@ -788,3 +788,27 @@ let student = new Student(1, "Rakib", "Ali");
 student.walk();
 student.study();
 ```
+
+### Method Overriding
+
+Sometimes we want to override methods from parent classes
+
+This can be done through the use of overriding:
+
+- By overriding we are changing the implementation of a parent method
+- In the code below, `Teacher` is a subclass, wherein no properties are changed
+  - Therefore, there is no need to create a constructor here as we inherit the parent constructor
+- We do however change the fullName method
+
+  - This is done using the `override` keyword
+  - The super keyword is again used here to carry on the implementation in the parent function
+
+- The `override` keyword must be used in these cases, and the `noImplicitOverride` setting in tsconfig is useful to ensure this
+
+```ts
+class Teacher extends Person {
+  override get fullName() {
+    return "Professor: " + super.fullName;
+  }
+}
+```
