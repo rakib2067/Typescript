@@ -743,3 +743,48 @@ class Ride {
 let ride1 = new Ride();
 let ride2 = new Ride();
 ```
+
+### Inheritance
+
+Where we are planning to create numerous classes with commonalities, Inheritance can be used to prevent code duplication:
+
+- With inheritance, there is a base class which shares properties and methods all its child classes will also share
+- Sub classes are made which extend these classes
+- Sub classes can contain different properties/methods specific to them and modify existing methods and properties
+
+In the code Below:
+
+- Person is the parent class, and has properties firstName and lastName
+- Student is a child class, which has an extra property and method
+- Since student is a sub class:
+  - `extends` must be used in the class creation
+  - `super()` method must be called, along with values respective of parent
+  - Parent proprties in the child constructor do not have to be given `public` as they are already created in the parent class
+
+```ts
+class Person {
+  constructor(public firstName: string, public lastName: string) {}
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  walk() {
+    console.log("Walking");
+  }
+}
+
+class Student extends Person {
+  constructor(public studentId: number, firstName, lastName) {
+    super(firstName, lastName);
+  }
+
+  study() {
+    console.log("studying");
+  }
+}
+
+let student = new Student(1, "Rakib", "Ali");
+
+student.walk();
+student.study();
+```
