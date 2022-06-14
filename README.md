@@ -791,7 +791,7 @@ student.study();
 
 ### Method Overriding
 
-Sometimes we want to override methods from parent classes
+Sometimes we want to modify methods from parent classes
 
 This can be done through the use of overriding:
 
@@ -801,7 +801,7 @@ This can be done through the use of overriding:
 - We do however change the fullName method
 
   - This is done using the `override` keyword
-  - The super keyword is again used here to carry on the implementation in the parent function
+  - The super keyword is again used here to carry on the implementation from the original method
 
 - The `override` keyword must be used in these cases, and the `noImplicitOverride` setting in tsconfig is useful to ensure this
 
@@ -810,5 +810,39 @@ class Teacher extends Person {
   override get fullName() {
     return "Professor: " + super.fullName;
   }
+}
+```
+
+### Polymorphism
+
+The name Polymorphism refers to 'many forms', and in oop refers to how an object can take many different forms
+
+- In our previous code we've created a Person base class with child classes of Student, Teacher and now Principal
+- Each child class has a fullname getter
+- However implementation is different for each class
+
+- In our example code, the printName function takes in an array of type Person
+  - Since the child classes inherit from Person, they pass the type check
+- In the for loop, despite the same method being called on each person, a different output is displayed
+
+This is an example of the `Open Closed Principle`:
+
+- Our Classes should be open for extension (inheritance)
+- But Classes should be closed for modification
+  - Once a class has been fully tested and working, it should no longer be modified as it can cause breaks in code
+
+```ts
+class HeadTeacher extends Person {
+  override get fullName() {
+    return "Head: " + super.fullName;
+  }
+}
+printName([
+  new Student(1, "Rakib", "Ali"),
+  new Teacher("Jagan", "Devaraj"),
+  new HeadTeacher("Sophie", "Hebdidge"),
+]);
+function printName(people: Person[]) {
+  people.forEach((person) => console.log(person.fullname));
 }
 ```
