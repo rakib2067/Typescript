@@ -645,3 +645,37 @@ class Account{
     // this._balance=balance;
   }
 ```
+
+### Getters and Setters
+
+We previously defined a method `getBalance` to get the value of the private property balance. There is however, a cleaner way of doing so with the use of getters and setters:
+
+- In the code below, we've modified the class to have getters and setters
+  - `getBalance()` has been replaced with `get balance`, and returns the value of the private property `_balance`
+  - The setter follows the same syntax, only it does not return a value and allows one to perform validation
+- The use of setters and getters prevent the direct mutation of class properties
+- Both can be called on an instance of a class, without parenthesis.
+
+```ts
+class Account {
+  getBalance(): number {
+    return this._balance;
+  }
+
+  // Simplified to
+  get balance(): number {
+    return this._balance;
+  }
+
+  // Setter to set value of private property
+  set balance(value: number) {
+    if (value < 0) {
+      throw new Error("Invalid Value!");
+    }
+    this._balance = value;
+  }
+}
+
+console.log(account.balance);
+account.balance = 10;
+```
