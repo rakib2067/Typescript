@@ -713,3 +713,33 @@ let seats = new SeatAssignment();
 seats.A1 = "Rakib";
 seats["A2"] = "Mosh";
 ```
+
+### Static Members
+
+As previously established, classes allow us to create multiple instances called objects, which each contain their own respectful state through a seperate space in memory that is accessed using the `this` keyword
+
+It is possible, however to have a shared state/data across a class, known as a `static member`, these are known as class Methods/properties:
+
+- In the example code, the Ride class, has a static property `_activeRides` which is set to 0 on initialisation of the first instance
+  - We then set it to private, so it cannot be accessed directly, and make it `static`, so it is a class property
+- Now we can create a getter, which also uses `static` to return the total active rides.
+
+```ts
+class Ride {
+  private static _activeRides: number = 0;
+
+  start() {
+    Ride._activeRides++;
+  }
+  stop() {
+    Ride._activeRides--;
+  }
+
+  static get activeRides() {
+    return Rides._activeRides;
+  }
+}
+
+let ride1 = new Ride();
+let ride2 = new Ride();
+```
