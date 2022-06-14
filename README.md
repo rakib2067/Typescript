@@ -679,3 +679,37 @@ class Account {
 console.log(account.balance);
 account.balance = 10;
 ```
+
+### Index Signatures
+
+In vanilla JavaScript, it is possible to create an empty object, and dynamically add properties on later as so:
+
+```js
+// Valid JS Code:
+let user = {};
+user.name = "Rakib";
+user.age = 22;
+```
+
+This implementation would not work in TypeScript, as TS is very strict about the shape of objects.
+Despite this, it is still possible to implement dynamic properties through the use of index signatures:
+
+- In the example code, we have a class `SeatAssignment`, to manage who is sitting where
+- Instead of creating multiple properties for each seat we use an `Index Signature Property`
+  - Firstly, we define the property name, and the type of the property name
+  - Then we annotate the type of value said key will hold
+
+```ts
+class SeatAssignment {
+  // A1, A2, A3 etc..
+  //Rakib, Mosh, Henry
+
+  //A1:string - Instead of doing multiple properties for seats we can do:
+
+  [seatNumber: string]: string;
+}
+
+let seats = new SeatAssignment();
+seats.A1 = "Rakib";
+seats["A2"] = "Mosh";
+```
