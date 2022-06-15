@@ -868,3 +868,35 @@ class Student extends Person{
   this.walk() // is valid since is a protected member
 }
 ```
+
+### Abstract Classes and Methods
+
+Abstract classes, are classes which cannot be directly instantiated. Rather, these classes, set up the base blueprints which can then be extended upon with other sub classes:
+
+- Take a shape class to draw on a canvas for instance, it can have base properties which every shape will have, such as color, size, position etc.
+- The circle class extends the Shape class with its own implementation for render
+
+- Because `Shape` is an abstract class, it cannot be instantiated as an object itself
+  - This is due to the `abstract` prefix
+  - It also contains an abstract method `render` that has no implementation
+- Abstract classes can contain `abstract methods`. i.e. Methods with no implementation
+  - These but also be prefixed with `abstract`, the curly braces removed and the return type must also be specified
+
+```ts
+abstract class Shape {
+  constructor(public color: string) {}
+
+  // Each shape will have a different render method
+  abstract render(): void;
+}
+
+class Circle extends Shape {
+  constructor(public radius: number, color: string) {
+    super(color);
+  }
+
+  override render(): void {
+    console.log("rendering a circle");
+  }
+}
+```
