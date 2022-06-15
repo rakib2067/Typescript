@@ -901,3 +901,50 @@ class Circle extends Shape {
   }
 }
 ```
+
+### Interfaces
+
+In OOP, Interfaces are used to define the interface/shape of an object.
+
+Using a calendar as an example, there are multiple calendar applications available, however they all share some commonalities:
+
+- In the example below, we've defined a Calendar Interface
+  - Already, it looks more concise than a class
+- Upon compiling this code, there will actually be no JavaScript output
+
+  - This is because interfaces do not exist in JS and there is no way to implement them
+
+- Therefore, the interface we've defined is only used by TS for type checking
+
+- We then implement this interface in class `GoogleCalendar` using the `implements` keyword instead of `extends`
+  - By doing this, the class must now contain the same properties and methods of the specified interface
+
+```ts
+interface Calendar {
+  name: string;
+  addEvent(): void;
+  removeEvent(): void;
+}
+
+interface CloudCalendar extends Calendar {
+  // Inherits all properties and methods
+  sync(): void; //Method to sync to the cloud
+}
+
+// Notice we use implements here instead of extends
+class GoogleCalendar implements Calendar {
+  constructor(public name: string) {}
+
+  addEvent(): void {
+    //implementation
+  }
+  removeEvent(): void {
+    //implementation
+  }
+}
+```
+
+- This implementation can be done through both `Interfaces` and `Abstract` classes
+  - The difference being that an `interface` does not compile to anything, so it is more efficient
+- In cases where we want some logic in the base class, it is better to use an abstract class
+  - This is because `abstract` class can contain normal non-abstract methods, which can be used by child classes
