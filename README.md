@@ -1008,3 +1008,50 @@ function wrapInArray<T>(value: T) {
 let numbers = wrapInArray(1);
 let strings = wrapInArray("1");
 ```
+
+### Generic Interfaces
+
+With TypeScript, we can also make our interfaces Generic
+
+Example:
+
+- In the code below, we are trying to create an interface for fetching data from an api
+- The api has 2 endpoints: 1 for users, the other for products
+
+- We first create a generic interface User, which can return data of the type of `Product` or `User`
+  - Each respictively containing a property of `title` and `username`
+- We then create a fetch function to make the api call, with a return type of Result
+  - This is a generic function since the result can be of differing types
+- We can then make the interfaces for our User and Products, each containing their own respective properties
+
+```ts
+// http://apiservice.com/users
+// http://apiservice.com/products
+
+interface Result<T> {
+  //used generic to cover both Product and User type
+  //Used unions in case no data is returned/error
+  data: T | null;
+  error: string | null;
+}
+
+//Function to fetch data from api, uses a generic for the type of result returned
+function fetch<T>(url: string): Result<T> {
+  //fake data
+  return { data: null, error: null };
+}
+
+interface Product {
+  title: string;
+}
+
+interface User {
+  username: string;
+}
+
+let result = fetch<User>("http://apiservice.com/users/1");
+result.data.username; //Since we are using User type
+
+let result = fetch<Product>("http://apiservice.com/products/1");
+result.data.title; //Since we are using Product type
+```
