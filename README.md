@@ -11,6 +11,7 @@ The first 3 sections are available for free [here](https://www.youtube.com/watch
 - [Section 2: TypeScript Fundamentals](#section-2-typescript-fundamentals)
 - [Section 3: Advanced Types](#section-3-advanced-types)
 - [Section 4: Classes, Interfaces and Object-oriented Programming](#section-4-classes-interfaces-and-object-oriented-programming)
+- [Section 5: Generics](#section-5-generics)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -955,3 +956,41 @@ Ultimately:
 
   - They do not have any implementation
   - They compile to nothing in JS
+
+## Section 5: Generics
+
+The code below shows a class for creating key value pairs, the problem being that with the implementation, keys can only be of type number:
+
+- We may want to have keys of multiple types
+- This can be implemented using either `any`, or creating a separate class for String KVP's however both solutions are inefficient
+- In this case we need a Generic solution, that covers all types
+
+```ts
+class KeyValuePair {
+  constructor(public key: number, public value: string) {}
+}
+
+let pair = new KeyValuePair(1, "Hello"); //Valid
+let pair2 = new KeyValuePair("2", "Bye"); //Error
+```
+
+### Generic Classes
+
+As evident in the previous code, the problem with our current class implementations is that they do not have options for multiple types
+In the case that we need a value to be able to satisfy multiple types, we can use `Generic Classes`:
+
+- Generic classes are identified through the `<>` syntax
+- Within the angle brackets, we can specify one or more Generic Type Parameter
+- Like normal parameters, these can be called anything
+
+- Now when creating an object, we can again use angled brackets to specify the types of each argument
+- However angled brackets are also not needed, as TS can infer the types
+
+```ts
+class KeyValuePair<K, V> {
+  constructor(public key: K, public value: V) {}
+}
+let pair = new KeyValuePair<string, string>("3", "Rakib"); //Valid object initialisation using generics
+
+let pair = new KeyValuePair("3", "Rakib"); //Also valid, as types are inferred
+```
