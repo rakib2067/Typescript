@@ -948,3 +948,10 @@ class GoogleCalendar implements Calendar {
   - The difference being that an `interface` does not compile to anything, so it is more efficient
 - In cases where we want some logic in the base class, it is better to use an abstract class
   - This is because `abstract` class can contain normal non-abstract methods, which can be used by child classes
+
+Ultimately:
+
+- Interfaces only define the shape of a class, including the properties and methods it should have
+
+  - They do not have any implementation
+  - They compile to nothing in JS
