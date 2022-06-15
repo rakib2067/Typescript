@@ -12,7 +12,7 @@ class Logger{
 class Person { 
     constructor(public firstName:string, public lastName:string) {}
 
-    get fulName(): string{
+    get fulName(){
         return `${this.firstName} ${this.lastName}`
     }
 }
