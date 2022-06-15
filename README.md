@@ -1055,3 +1055,27 @@ result.data.username; //Since we are using User type
 let result = fetch<Product>("http://apiservice.com/products/1");
 result.data.title; //Since we are using Product type
 ```
+
+### Generic Constraints
+
+It's possible to limit the types of our Generics:
+
+- We can do this by using the `extends` keyword
+- We can pass:
+  - Union constraints
+  - Object constraints
+  - Interface Constraints
+  - Class Constraints
+
+```ts
+interface Person {
+  name: string;
+}
+function echo<T extends number | string>(value: T): T {
+  return value;
+}
+
+function echo<T extends Person>(value: T): T {
+  return value;
+}
+```
