@@ -3,6 +3,7 @@
 ## Introduction
 
 This repo will contain the code and notes for the course: [The Ultimate TypeScript Course](https://codewithmosh.com/courses/enrolled/1779784).
+The first 3 sections are available for free [here](https://www.youtube.com/watch?v=d56mG7DezGs&ab_channel=ProgrammingwithMosh)
 
 ## Table of Contents
 
