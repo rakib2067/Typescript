@@ -994,3 +994,17 @@ let pair = new KeyValuePair<string, string>("3", "Rakib"); //Valid object initia
 
 let pair = new KeyValuePair("3", "Rakib"); //Also valid, as types are inferred
 ```
+
+### Generic Functions
+
+Just like Generic Classes, we can also create Generic Functions/Methods
+
+```ts
+function wrapInArray<T>(value: T) {
+  return [value];
+}
+
+//both valid
+let numbers = wrapInArray(1);
+let strings = wrapInArray("1");
+```
