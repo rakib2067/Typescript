@@ -846,3 +846,25 @@ function printName(people: Person[]) {
   people.forEach((person) => console.log(person.fullname));
 }
 ```
+
+### Private vs Protected Members
+
+Classes in TypeScript also allow the use of `protected` members:
+
+- Like `private` members, protected members can only be accesed within the containing Class
+- The difference is however, is that protected members can also be accessed by child elements of a parent class
+
+  - Private members cannot be accessed by child classes
+
+- Protected members should not be used often, as they can create coupling in applications
+
+```ts
+class Person {
+  protected walk() {
+    console.log(walk);
+  }
+}
+class Student extends Person{
+  this.walk() // is valid since is a protected member
+}
+```
