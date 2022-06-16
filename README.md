@@ -1140,3 +1140,42 @@ class ProductStore extends Store<Product> {
 
 let store = new Store<Product>();
 ```
+
+### `keyof` Operator
+
+The `keyof` operator takes an object type and produces a string or numeric literal union of its keys:
+
+- In the example code, the `Store` class has a method `find`
+  - This takes in a property and value, performs an `array.find` on the store to check for matching values
+- We've set the value to be `unknown` as find can be used for either price or name, both differing in types
+- If we set a fixed type annotation for the propery param, the interpreter will think we're trying to target an index signature
+- Instead, the `keyof` operator can be used as an annotator
+  - This means that param will be one of the properties of that Type
+  - In this case since `T` is `Product`, `keyof T` will return `name` or `price`
+- Now when trying to check for a non-existing property, an error will be shown
+
+```ts
+class Product{
+  name:string,
+  price:number
+}
+
+class Store<T>{
+  protected _objects: T[]= []
+
+  add(obj: T): void{
+    this._objects.push(obj)
+  }
+  find(property: keyof T ,value: unknown): T|undefined{
+    return this._objects.find(obj=> obj[property]===value)
+  }
+}
+
+let store= new Store<Product>()
+
+store.add({name:'a',price: 5})
+
+store.find('name','a')
+store.find('price',5)
+
+```
