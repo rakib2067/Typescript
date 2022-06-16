@@ -1079,3 +1079,64 @@ function echo<T extends Person>(value: T): T {
   return value;
 }
 ```
+
+### Extending Generic Classes
+
+As established, classes can be extended to create sub-classes. When Extending a Generic class there are 3 cases we need to consider.
+
+In our code example, `Store` is the generic class that is used to store different types of objects in an array<br/>
+We then create 3 Child Classes:
+
+- `CompressibleStore` is a generic subclass where the generic type parameter is passed
+
+  - When creating an object it will be done as so `let store= new CompressibleStore<Product>()`
+  - This is because the type param upon object creation can be used in our parent class
+
+- `SearchableStore` contains a Restricted Generic type param
+
+  - Only class types with a propery `name` can be passed
+  - This is because we are referencing the property `name` in our `array.find()`
+
+- `ProductStore` is a specific Generic type Subclass
+  - As the name suggests, this subclass is used for only Product objects
+  - It contains a method `filterByCategory` which only applies to products
+
+```ts
+class Product {
+  name: string;
+  price: number;
+}
+
+//Class store will store different kinds of objects: Products, Orders, Carts etc
+class Store<T> {
+  //An array to store all objects in a store
+  //protected so can only be accessed within class and by child classes
+  protected _objects: T[] = []; //no need for constructor as its better to initialise empty array upon object creation anyway
+
+  add(obj: T): void {
+    this._objects.push(obj);
+  }
+}
+
+//Passing on Generic type param in child class
+class CompressibleStore<T> extends Store<T> {
+  compress() {}
+}
+
+//Restricted Generic type param
+//Only objects that have name property can be used
+class SearchableStore<T extends { name: string }> extends Store<T> {
+  find(name: string): T | undefined {
+    return this._objects.find((obj) => obj.name == name);
+  }
+}
+
+//Fixed Generic type param for sprcific use case
+class ProductStore extends Store<Product> {
+  filterByCategory(category: string): Product[] {
+    return this._objects.filter((obj) => obj.category == category);
+  }
+}
+
+let store = new Store<Product>();
+```
