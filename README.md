@@ -1179,3 +1179,17 @@ store.find('name','a')
 store.find('price',5)
 
 ```
+
+### Type Mapping
+
+Sometimes we need to base a type on another type. This is called `type mapping`:
+
+```ts
+class Product {
+  name: string;
+  price: number;
+}
+type ReadOnlyProduct = {
+  [Property in keyof Product]: Product[Property];
+};
+```
