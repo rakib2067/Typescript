@@ -1184,12 +1184,32 @@ store.find('price',5)
 
 Sometimes we need to base a type on another type. This is called `type mapping`:
 
+- Type mapping utilises two tools
+  - The `keyof` property, to get a union of all types
+  - Index signatures to assign a type to the value of the property
+- Firstly the `in` keyword us used to iterate over all the properties in the Product class
+- Then for each iteration, we are assigning the type of the property to be the type of value for that iteration
+- By doing this we can now create readonly values of type Product
+
+- We can further extend this, by making it a Generic type
+
 ```ts
 class Product {
   name: string;
   price: number;
 }
+
+//Readonly Product
 type ReadOnlyProduct = {
-  [Property in keyof Product]: Product[Property];
+  readonly [Property in keyof Product]: Product[Property];
 };
+
+let product: ReadOnlyProduct = { name: "bread", price: 2 }; //valid
+
+//Generic Readonly type
+type ReadOnly<T> = {
+  readonly [Key in T]: T[Key];
+};
+
+let product: ReadOnly<Product> = { name: "bread", price: 2 }; //valid generic
 ```
