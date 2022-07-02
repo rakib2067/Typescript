@@ -1293,3 +1293,34 @@ function Pipe(constructor: Function) {
 @Pipe
 class ProfileComponent {}
 ```
+
+### Method Decorators
+
+We can also enhance our methods using decorators:
+
+- First we create a decorator function which takes in 3 parameters
+  - target, which has to be set to type of `any`
+  - The name of the targetMethod
+  - The descritor object of the target method, which will have a type of `PropertyDescriptor`
+    - Using `descriptor.value` we can access the passed method and even overwrite it
+
+```ts
+function Log(target: any, methodName: string, descriptor: PropertyDescriptor) {
+  //Use type assertion to tell compiler it is a function
+  const original = descriptor.value as Function;
+
+  //Rest operator to allow for an arbitrary number of arguments, and spread to pass them when called
+  descriptor.value = function (...args: any) {
+    console.log("Before");
+    original.call(this, ...args);
+    console.log("After");
+  };
+}
+
+class Person {
+  @Log
+  say(message: string) {
+    console.log(message);
+  }
+}
+```
