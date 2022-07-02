@@ -1324,3 +1324,51 @@ class Person {
   }
 }
 ```
+
+### Property Decorators
+
+We can also use decorators to enhance class properties:
+
+- In the example we start by creating a User class with a password property
+- Since property decorators can only be called on actual properties and not within the constructor function
+
+  - Hence why we are not using parameter properties
+
+- In the example, our decorator ensures our properties (password in this case) fit the passed length requirements
+- We create a Decorator factory which passes the length to our actual decorator
+- The decorator also takes the target and propertyName
+
+- In our decorator, we create a `PropertyDescriptor` for our target property
+- Within this we define the getters and setters, which can be called on that property
+- Finally we assign the descriptor to our target property
+
+```ts
+function MinLength(length: number) {
+  return (target: any, propertyName: string) => {
+    let value: string;
+    const descriptor: PropertyDescriptor = {
+      get(){
+        return value
+      }
+      set(newValue: string) {
+        if (newValue.length < length) {
+          throw new Error(
+            `${propertyName} should at least be ${length} characters long`
+          );
+        }
+        value = newValue;
+      },
+    };
+    Object.defineProperty(target,propertyName, descriptor)
+  };
+}
+
+class User {
+  @MinLength(8)
+  password: string;
+
+  constructor(password: string) {
+    this.password = password;
+  }
+}
+```
