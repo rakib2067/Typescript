@@ -1249,3 +1249,47 @@ function Component(constructor: Function) {
 @Component
 class ProfileComponent {}
 ```
+
+### Parameterized Decorators
+
+Sometimes we need to pass arguments to our decorators.
+
+- To do this, we wrap our decorator in a function called a decorator factory, that returns an anonymous function
+- Inside the decorator factory, we pass the arguments to the returned function expression
+- The returned function will be called by the decorator at runtime
+
+- We can take this a step further and pass Objects/types as arguments
+
+```ts
+type ComponentOptions = {
+  selector: string;
+};
+
+// Decorator Factory
+function Component(options: ComponentOptions) {
+  return (constructor: Function) => {
+    constructor.prototype.uniqueId = Date.now();
+    constructor.prototype.options = options;
+}
+
+@Component({selector: '#profile'})
+class ProfileComponent {}
+```
+
+### Decorator Composition
+
+It is also possible to apply multiple decorators to one class:
+
+- As seen in the example below, we create another decorator function 'Pipe'
+- Despite being applied below the first decorator, it will be applied first.
+- This is because constructors follow the `f(g(x))` Function composition concept in Maths.
+
+```ts
+function Pipe(constructor: Function) {
+  constructor.prototype.pipe = true;
+}
+
+@Component({ selector: "#profile" })
+@Pipe
+class ProfileComponent {}
+```
