@@ -25,3 +25,4 @@ class Entity<T>{
 interface Account { userId:number; username:string;}
 
 // keyof Account = "userId"| "username"
+

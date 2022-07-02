@@ -12,6 +12,7 @@ The first 3 sections are available for free [here](https://www.youtube.com/watch
 - [Section 3: Advanced Types](#section-3-advanced-types)
 - [Section 4: Classes, Interfaces and Object-oriented Programming](#section-4-classes-interfaces-and-object-oriented-programming)
 - [Section 5: Generics](#section-5-generics)
+- [Section 6: Decorators](#section-6-decorators)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -1212,4 +1213,39 @@ type ReadOnly<T> = {
 };
 
 let product: ReadOnly<Product> = { name: "bread", price: 2 }; //valid generic
+```
+
+## Section 6: Decorators
+
+Decorators are attributes we apply to classes and their members which can change how they behave.
+
+A Decorator is just a function that gets called by the JavaScript runtime/engine, will call the code and pass our class to it.
+In this function we have a chance to modify our class:
+
+- We can add new properties, methods or change the implementation of existing methods
+- To use decorators the compiler option `experimentalDecorators` should be enabled
+
+```ts
+@Component
+class ProfileComponent {}
+```
+
+### Class Decorators
+
+As previously mentioned, a decorator is simply a function that gets executed by the JavaScript runtime.
+
+- Depending on where we call this Decorator, the number and type of parameters varies.
+- Since we are calling it on a class, the only parameter we have is the constructor function (The constructor of the class).
+- We can now add properties and methods to the constructors prototype, so that every class created will also contain these methods.
+
+- We can also do this through inheritance, by having the class inherit the properties/methiods from a parent class
+
+```ts
+function Component(constructor: Function) {
+  //This function will always run when the decorator is called even if no instances are created
+  constructor.prototype.uniqueId = Date.now();
+}
+
+@Component
+class ProfileComponent {}
 ```
