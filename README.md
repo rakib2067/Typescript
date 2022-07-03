@@ -1428,4 +1428,16 @@ export function calculateTax(income) {
 }
 ```
 
+### TS Declaration files
+
+Another way of providing type information is through declaration files. These are files depicted through the `d.ts` extension
+
+Declaration files should have the same name as their corresponding JS file.
+
+When using declaration files, all functions should be described within them, otherwise they will not be accessible to our TS files.
+
+```ts
+export declare function calculateTax(income: number): number;
+```
+
 ## Section 8: React with TypeScript
