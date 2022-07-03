@@ -1412,6 +1412,20 @@ export function calculateTax(income) {
 }
 ```
 
-## Section 8: React with TypeScript
+### Describing Types Using JSDoc
 
-## Section 9: Express with TypeScript
+JSDoc is a special type of comment we can add to our JS files, which we can use to describe type information as so:
+
+- We can also add comments explaining our code, so that others can see through intellisense.
+
+```js
+/**
+ * @param {number} income - net salary after expenses
+ * @returns {number}
+ * */
+export function calculateTax(income) {
+  return income * 0.3;
+}
+```
+
+## Section 8: React with TypeScript
