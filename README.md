@@ -13,6 +13,9 @@ The first 3 sections are available for free [here](https://www.youtube.com/watch
 - [Section 4: Classes, Interfaces and Object-oriented Programming](#section-4-classes-interfaces-and-object-oriented-programming)
 - [Section 5: Generics](#section-5-generics)
 - [Section 6: Decorators](#section-6-decorators)
+- [Section 7: Integrating with JavaScript](#section-7-integrating-with-javascript)
+- [Section 8: React with TypeScript](#section-8-react-with-typescript)
+- [Section 9: Express with TypeScript](#section-9-express-with-typescript)
 
 ## Section 1: Getting Started with TypeScript
 
@@ -1372,3 +1375,43 @@ class User {
   }
 }
 ```
+
+## Section 7: Integrating with JavaScript
+
+It will not always be possible to code purely in TypeScript. This could be due to numerous reasons for example working on a prevoious JS project which has not yet had TypeScript integrated or using a library not configured for TypeScript.
+
+- In order for our TS compiler to recognize JS imports we need to enable the `allowJS` setting
+- Also we need to change the `module` setting to `CommonJS` to solve module issues
+
+JavaScript File:
+
+```js
+export function calculateTax(income) {
+  return income * 0.3;
+}
+```
+
+TypeScript File:
+
+```ts
+import { calculateTax } from "./tax";
+```
+
+### Type Checking JS Code
+
+The next problem is type checking. Doing the above will allow for us to use JS code, however it will not be typechecked, leading to possible errors upon compilation.
+
+One fix is enabling `checkJs` in our config file. This will enable basic type checking.
+
+In cases where we don't want our JS code being type checked, we can add the following comment on top of our files:
+
+```js
+// @ts-nocheck
+export function calculateTax(income) {
+  return income * 0.3;
+}
+```
+
+## Section 8: React with TypeScript
+
+## Section 9: Express with TypeScript
