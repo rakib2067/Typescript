@@ -1440,4 +1440,14 @@ When using declaration files, all functions should be described within them, oth
 export declare function calculateTax(income: number): number;
 ```
 
+### Using Definitely Typed Declaration Files for third part libraries
+
+As previously mentioned, certain libraries do not come with built in TS support.
+
+An example of this is the utility library `lodash`.
+
+Despite this, there is a library called definitely typed, which contains type declarations for most popular libraries.
+
+Whe can install specific packages as so `npm install @types/lodash`
+
 ## Section 8: React with TypeScript
