@@ -1451,3 +1451,45 @@ Despite this, there is a library called definitely typed, which contains type de
 Whe can install specific packages as so `npm install @types/lodash`
 
 ## Section 8: React with TypeScript
+
+We can create a React Application configured with TypeScript support using the following syntax:
+
+`npx create-react-app <app-name> --template typescript`
+
+This will set up our boilerplate code, only our jsx files are now replaced with `tsx`
+
+### Creating a Component
+
+In React, all functional components come with a default parameter called props, which holds all the properties passed to it.
+With TypeScript, just passing props will give us an error, as there is no specificity of it's type/shape.
+
+We can fix this by creating an interface and annotating our props with it:
+
+- In our example code, the reminder list is a component to render a list of reminders
+
+  - Therefore it takes in an array of reminders as its props
+
+- The reminders interface, however is something that will be referred to throughout the app, therefore it is best to create a separate file for it
+  - It is convention to store all our reusbale types/interfaces in a folder called models/types/entities/interfaces
+
+Component:
+
+```ts
+//Standard naming convention
+interface ReminderListProps {
+  //will contain an array of Reminder objects
+  items: Reminder[];
+}
+function ReminderList(props) {
+  return <div></div>;
+}
+```
+
+Reusable Interface:
+
+```ts
+interface Reminder {
+  id: number;
+  title: string;
+}
+```
