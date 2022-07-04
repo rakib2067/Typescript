@@ -1480,7 +1480,7 @@ interface ReminderListProps {
   //will contain an array of Reminder objects
   items: Reminder[];
 }
-function ReminderList(props) {
+function ReminderList(props: ReminderListProps) {
   return <div></div>;
 }
 ```
@@ -1491,5 +1491,47 @@ Reusable Interface:
 interface Reminder {
   id: number;
   title: string;
+}
+```
+
+### Using Generic Functional Components
+
+An issue with our previous implementation is that we're restricting our props to contain the properties we pass in our interfaces.
+In doing so we have ignored the `children` property that comes with every react component.
+A fix for this could be to add the `children` property to all out prop interfaces, however this can be cumbersome and there is a better solution.
+
+- A functional component can be turned into a Generic Function
+- In doing so it will be a component that contains all the base React properties
+
+  - However it will also be restricted to the interfaces we pass to it
+
+- Firstly, we convert our components to function expressions and assign an annotation of `React.FC`
+  - We now have access to the `children` prop
+- Next we can make our FC Generic by passing a generic type to it, allowing us to shape our props
+
+```ts
+//Import Todo from models
+
+interface TodosProps {
+  items: Todo[];
+}
+
+const Todos: React.FC<TodosProps> = (props) => {
+  return <div> </div>;
+};
+```
+
+### Using the useState Hook
+
+As we are using a TypeScript template, our project comes built in with tools to allow for type checking.
+
+- The `useState` hook is now Generic and can have types passed to it
+- In our example, we've again used the reminder type but now as an array
+- We do however, have to give an initial state of an empty array otherwise the compiler will raise a type issue
+  - This is because an empty useState will return `undefined`
+
+```ts
+function App() {
+  const [reminders, setReminders] = useState<Reminder[]>([]);
 }
 ```
