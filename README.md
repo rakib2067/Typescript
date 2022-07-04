@@ -1521,6 +1521,17 @@ const Todos: React.FC<TodosProps> = (props) => {
 };
 ```
 
+### Form Submission
+
+In React, forms are handled through the `onSubmit` prop, wherein the event object is passed as an argument to our submit handler.
+With TypeScript, we now have to specify the type of the event object as `React.FormEvent` in order to access its properties.
+
+```ts
+function submitHandler(e: React.FormEvent) {
+  e.preventDefault();
+}
+```
+
 ### Using the useState Hook
 
 As we are using a TypeScript template, our project comes built in with tools to allow for type checking.
@@ -1536,18 +1547,7 @@ function App() {
 }
 ```
 
-### Form Submission
-
-In React, forms are handled through the `onSubmit` prop, wherein the event object is passed as an argument to our submit handler.
-With TypeScript, we now have to specify the type of the event object as `React.FormEvent` in order to access its properties.
-
-```ts
-function submitHandler(e: React.FormEvent) {
-  e.preventDefault();
-}
-```
-
-### Working with Refss
+### Working with Refs
 
 The 'useRef' hook is used to create a reference that can be attatched to a pure HTML element to read its values.
 The above implementation would work in normal JS, however with TypeScript, extra steps must be taken, as there are different types of HTML elements a ref can be attatched to:
@@ -1555,8 +1555,50 @@ The above implementation would work in normal JS, however with TypeScript, extra
 - We first apply a genenric type to our `useRef` specifying the type of element it will be attached to
   - In this case it is the `HTMLInputElement` type.
   - All DOM elements have built in types, which we can use to refer to them
-- We must also initialise it with a value of `null` otherwise the TS compiler
+- We must also initialise it with a value of `null` otherwise the TS compiler will think the ref is initialised to another element
 
 ```ts
 const inputTextRef = useRef<HTMLInputElement>(null);
+```
+
+### React Context with TypeScript
+
+React context, allows for us to set up and utilize component wide state
+Typically, context will be defined in a store reporsitory along with a provider, which wraps our app component
+
+- We first create our context, and provide a generic type for our `createContext` function
+  - Within this function we create our initial object
+  - The Generic will check if this object matches the provided interface
+- We can then create the Context Provider, which will handle all the state and logic
+- In the provider, we can provide the state and handlers as the value in the form of an object to be used elsewhere
+
+```ts
+interface TodosCtx{
+  items: Todo[];
+  addTodo:(text:string)=>void;
+  removeTodo:(id:string)=>void;
+}
+
+let TodosContext = React.createContext<TodosCtx>({
+  items: [],
+  addTodo: () => {},
+  removeTodo(id:string)=>{}
+});
+
+const TodosContextProvider: React.FC=(props)=>{
+  //Will contain state for Todos, and matching handlers too
+
+  let contextValue:TodosCtx={
+    items:todos,
+    addTodo: addTodoHandler,
+    removeTodo: removeTodoHandler,
+  }
+  return(
+    //Wrapper
+    <TodosContext.Provider value={contextValue}>
+      {props.children}
+    </TodosContext.Provider>
+  )
+
+}
 ```
