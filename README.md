@@ -1535,3 +1535,14 @@ function App() {
   const [reminders, setReminders] = useState<Reminder[]>([]);
 }
 ```
+
+### Form Submission
+
+In React, forms are handled through the `onSubmit` prop, wherein the event object is passed as an argument to our submit handler.
+With TypeScript, we now have to specify the type of the event object as `React.FormEvent` in order to access its properties.
+
+```ts
+function submitHandler(e: React.FormEvent) {
+  e.preventDefault();
+}
+```
