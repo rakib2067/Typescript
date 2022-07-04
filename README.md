@@ -1546,3 +1546,17 @@ function submitHandler(e: React.FormEvent) {
   e.preventDefault();
 }
 ```
+
+### Working with Refss
+
+The 'useRef' hook is used to create a reference that can be attatched to a pure HTML element to read its values.
+The above implementation would work in normal JS, however with TypeScript, extra steps must be taken, as there are different types of HTML elements a ref can be attatched to:
+
+- We first apply a genenric type to our `useRef` specifying the type of element it will be attached to
+  - In this case it is the `HTMLInputElement` type.
+  - All DOM elements have built in types, which we can use to refer to them
+- We must also initialise it with a value of `null` otherwise the TS compiler
+
+```ts
+const inputTextRef = useRef<HTMLInputElement>(null);
+```
