@@ -1517,7 +1517,7 @@ interface TodosProps {
 }
 
 const Todos: React.FC<TodosProps> = (props) => {
-  return <div> </div>;
+  return <div>{props.items.map(...)}</div>;
 };
 ```
 
